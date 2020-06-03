@@ -138,7 +138,8 @@ static HBITMAP GetImage(int iamgeId) {
 						if (resized = CreateCompatibleBitmap(dc, width, height)) {
 							auto hSrcOld = SelectObject(src, original);
 							auto hDstOld = SelectObject(dest, resized);
-							SetStretchBltMode(dest, COLORONCOLOR);
+							SetStretchBltMode(dest, HALFTONE);
+							SetBrushOrgEx(dest, 0, 0, NULL);
 							StretchBlt(dest, 0, 0, width, height, src, 0, 0, bitmap.bmWidth, bitmap.bmHeight, SRCCOPY);
 							SelectObject(src, hSrcOld);
 							SelectObject(dest, hDstOld);
